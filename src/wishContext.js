@@ -5,7 +5,9 @@ const context = createContext()
 export const WishConsumer = context.Consumer
 
 export function WishProvider(props) {
-  const [wishes, setWishes] = useState([])
+  const [wishes, setWishes] = useState([
+    { name: 'Nike shoe', link: 'https://spitze.design' },
+  ])
   function addWish(wish) {
     setWishes([...wishes, wish])
   }

@@ -1,28 +1,53 @@
 import React, { useState, useContext } from 'react'
+import styled from 'styled-components'
 import wishContext from '../wishContext'
 
+const Label = styled.label`
+  display: block;
+`
+
+const Input = styled.input`
+  width: 100%;
+`
+
+const Form = styled.form`
+  max-width: 45rem;
+`
+
 function AddWish() {
-  const [value, setValue] = useState('')
+  const [name, setName] = useState('')
+  const [link, setLink] = useState('')
   const { addWish } = useContext(wishContext)
   return (
     <>
-      <form
+      <Form
         onSubmit={event => {
           event.preventDefault()
-          addWish(value)
-          setValue('')
+          addWish({ name, link })
+          setName('')
+          setLink('')
         }}
       >
-        <label>
+        <Label>
           Name
-          <input
+          <Input
+            required
             type="text"
-            value={value}
-            onChange={event => setValue(event.target.value)}
+            value={name}
+            onChange={event => setName(event.target.value)}
           />
-        </label>
+        </Label>
+        <Label>
+          Link
+          <Input
+            required
+            type="url"
+            value={link}
+            onChange={event => setLink(event.target.value)}
+          />
+        </Label>
         <button type="submit">Add wish</button>
-      </form>
+      </Form>
     </>
   )
 }
