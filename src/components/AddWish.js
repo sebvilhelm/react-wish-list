@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import wishContext from '../wishContext'
+import Button from './Button'
 
 const Label = styled.label`
   display: block;
@@ -8,10 +9,14 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
 `
 
 const Form = styled.form`
   max-width: 45rem;
+  padding: 1rem 0;
 `
 
 function AddWish() {
@@ -46,7 +51,7 @@ function AddWish() {
             onChange={event => setLink(event.target.value)}
           />
         </Label>
-        <button type="submit">Add wish</button>
+        <Button type="submit">Add wish</Button>
       </Form>
     </>
   )

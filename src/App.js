@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import { Router, Link } from '@reach/router'
-import { createGlobalStyle } from 'styled-components/macro'
+import { createGlobalStyle, ThemeProvider } from 'styled-components/macro'
 
 import { WishProvider } from './wishContext'
 import Spinner from './components/Spinner'
@@ -15,26 +15,32 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 `
+const theme = {
+  red: 'tomato',
+}
+
 function App() {
   return (
-    <WishProvider>
-      <main>
-        <GlobalStyle />
-        <header>
-          <h1>Wish List</h1>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="add-wish">Add Wish</Link>
-          </nav>
-        </header>
-        <Suspense fallback={<Spinner />}>
-          <Router>
-            <WishList path="/" />
-            <AddWish path="add-wish" />
-          </Router>
-        </Suspense>
-      </main>
-    </WishProvider>
+    <ThemeProvider theme={theme}>
+      <WishProvider>
+        <main>
+          <GlobalStyle />
+          <header>
+            <h1>Wish List</h1>
+            <nav>
+              <Link to="/">Home</Link>
+              <Link to="add-wish">Add Wish</Link>
+            </nav>
+          </header>
+          <Suspense fallback={<Spinner />}>
+            <Router>
+              <WishList path="/" />
+              <AddWish path="add-wish" />
+            </Router>
+          </Suspense>
+        </main>
+      </WishProvider>
+    </ThemeProvider>
   )
 }
 
