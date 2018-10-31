@@ -1,9 +1,11 @@
 import React, { Suspense, lazy } from 'react'
+import { Router, Link } from '@reach/router'
 import { createGlobalStyle } from 'styled-components/macro'
 
 import { WishProvider } from './wishContext'
 import Spinner from './components/Spinner'
 const WishList = lazy(() => import('./components/WishList'))
+const AddWish = lazy(() => import('./components/AddWish'))
 
 const GlobalStyle = createGlobalStyle`
   html { box-sizing: border-box; font-size: 18px; }
@@ -16,13 +18,22 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <WishProvider>
-      <div>
+      <main>
         <GlobalStyle />
-        <h1>Wish List</h1>
+        <header>
+          <h1>Wish List</h1>
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="add-wish">Add Wish</Link>
+          </nav>
+        </header>
         <Suspense fallback={<Spinner />}>
-          <WishList />
+          <Router>
+            <WishList path="/" />
+            <AddWish path="add-wish" />
+          </Router>
         </Suspense>
-      </div>
+      </main>
     </WishProvider>
   )
 }

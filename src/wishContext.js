@@ -1,21 +1,15 @@
-import React, { Component, createContext } from 'react'
+import React, { useState, createContext } from 'react'
 
 const context = createContext()
 
 export const WishConsumer = context.Consumer
 
-export class WishProvider extends Component {
-  state = {
-    wishes: [],
+export function WishProvider(props) {
+  const [wishes, setWishes] = useState([])
+  function addWish(wish) {
+    setWishes([...wishes, wish])
   }
-  render() {
-    const { wishes } = this.state
-    return (
-      <context.Provider value={{ wishes }}>
-        {this.props.children}
-      </context.Provider>
-    )
-  }
+  return <context.Provider {...props} value={{ wishes, addWish }} />
 }
 
 export default context

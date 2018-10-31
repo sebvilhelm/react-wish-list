@@ -12,7 +12,7 @@ function WishList() {
     <ul>
       {wishes.map(wish => {
         return (
-          <li>
+          <li key={wish}>
             <Wish wish={wish} />
           </li>
         )
