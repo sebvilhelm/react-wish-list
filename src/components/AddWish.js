@@ -15,7 +15,8 @@ const Input = styled.input`
 `
 
 const Form = styled.form`
-  max-width: 45rem;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
   padding: 1rem 0;
 `
 
@@ -37,9 +38,10 @@ function AddWish() {
       <Form
         onSubmit={event => {
           event.preventDefault()
-          addWish({ name, link, price: price > 0 ? price : null })
+          addWish({ name, link, price })
           setName('')
           setLink('')
+          setPrice(0)
         }}
       >
         <Label htmlFor="name">
@@ -49,6 +51,7 @@ function AddWish() {
             type="text"
             value={name}
             onChange={event => setName(event.target.value)}
+            autoComplete="off"
             required
           />
         </Label>
@@ -59,7 +62,7 @@ function AddWish() {
             type="url"
             value={link}
             onChange={event => setLink(event.target.value)}
-            required
+            autoComplete="off"
           />
         </Label>
         <Label htmlFor="price">
@@ -69,7 +72,7 @@ function AddWish() {
             type="number"
             value={price}
             onChange={event => setPrice(event.target.value)}
-            required
+            autoComplete="off"
           />
         </Label>
         <Button type="submit">Add wish</Button>

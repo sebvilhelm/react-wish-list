@@ -1,6 +1,9 @@
 import React, { Suspense, lazy } from 'react'
 import { Router, Link } from '@reach/router'
-import { createGlobalStyle, ThemeProvider } from 'styled-components/macro'
+import styled, {
+  createGlobalStyle,
+  ThemeProvider,
+} from 'styled-components/macro'
 
 import { WishProvider } from './wishContext'
 import Spinner from './components/Spinner'
@@ -16,8 +19,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 const theme = {
+  maxWidth: '1000px',
   red: 'tomato',
+  lightGrey: 'hsl(0,0%,95%)',
+  white: 'hsl(0,0%,99%)',
 }
+
+const Header = styled.header`
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+`
 
 function App() {
   return (
@@ -25,13 +36,13 @@ function App() {
       <WishProvider>
         <main>
           <GlobalStyle />
-          <header>
-            <h1>Wish List</h1>
+          <Header>
+            <h1>Ønskeseddel</h1>
             <nav>
-              <Link to="/">Home</Link>
-              <Link to="add-wish">Add Wish</Link>
+              <Link to="/">Ønskeseddel</Link>
+              <Link to="add-wish">Tilføj Ønske</Link>
             </nav>
-          </header>
+          </Header>
           <Suspense fallback={<Spinner />}>
             <Router>
               <WishList path="/" />
