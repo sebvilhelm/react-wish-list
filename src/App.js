@@ -1,21 +1,25 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, useContext, Fragment } from 'react'
 import { Router, Link } from '@reach/router'
 import styled, {
   createGlobalStyle,
   ThemeProvider,
 } from 'styled-components/macro'
-
-import { WishProvider } from './wishContext'
+import { authContext } from './auth'
 import Spinner from './components/Spinner'
+import LogIn from './components/LogIn'
+import Button, { OutlineButton } from './components/Button'
 const WishList = lazy(() => import('./components/WishList'))
 const AddWish = lazy(() => import('./components/AddWish'))
 
 const theme = {
   maxWidth: '1000px',
-  red: 'tomato',
+  red: 'hsl(9, 100%, 64%)',
+  redBlack: 'hsl(9, 23%, 15%)',
   green: 'hsl(92, 21%, 71%)',
+  darkGreen: 'hsl(92, 35%, 50%)',
   lightGrey: 'hsl(92,2%,95%)',
   white: 'hsl(92,2%,99%)',
+  black: 'hsl(92,20%,15%)',
   boxShadow:
     '1px 1px 5px hsla(92,0%,0%,0.05), 1px 1px 10px hsla(92,0%,0%,0.02)',
 }
@@ -26,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: ${theme.black};
     background-color: ${theme.white};
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b5c5a7' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
   }
@@ -36,27 +41,53 @@ const Header = styled.header`
   margin: 0 auto;
 `
 
+const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+`
+
+const StyledLink = styled(Link)`
+  padding: 0 0.5rem;
+  color: ${theme.darkGreen};
+`
+
+const Spacer = styled.div`
+  flex: 1;
+`
+
 function App() {
+  const { user } = useContext(authContext)
   return (
     <ThemeProvider theme={theme}>
-      <WishProvider>
-        <main>
-          <GlobalStyle />
-          <Header>
-            <h1>Ønskeseddel</h1>
-            <nav>
-              <Link to="/">Ønskeseddel</Link>
-              <Link to="add-wish">Tilføj Ønske</Link>
-            </nav>
-          </Header>
-          <Suspense fallback={<Spinner />}>
-            <Router>
-              <WishList path="/" />
-              <AddWish path="add-wish" />
-            </Router>
-          </Suspense>
-        </main>
-      </WishProvider>
+      <main>
+        <GlobalStyle />
+        <Header>
+          <h1>Ønskeseddel</h1>
+          <Nav>
+            <StyledLink to="/">Ønskeseddel</StyledLink>
+            {user && (
+              <Fragment>
+                <StyledLink to="add-wish">Tilføj Ønske</StyledLink>
+              </Fragment>
+            )}
+            <Spacer />
+            {user ? (
+              <Button>Log out</Button>
+            ) : (
+              <OutlineButton as={Link} to="login">
+                Login
+              </OutlineButton>
+            )}
+          </Nav>
+        </Header>
+        <Suspense fallback={<Spinner />}>
+          <Router>
+            <WishList path="/" />
+            <AddWish path="add-wish" />
+            <LogIn path="login" />
+          </Router>
+        </Suspense>
+      </main>
     </ThemeProvider>
   )
 }

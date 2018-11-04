@@ -1,27 +1,7 @@
 import React, { useState } from 'react'
-import styled from 'styled-components/macro'
 import { db } from '../firebase'
+import { Form, Label, Input } from './Form'
 import Button from './Button'
-
-const Label = styled.label`
-  display: block;
-`
-
-const Input = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  border: 1px solid ${({ theme }) => theme.green};
-`
-
-const Form = styled.form`
-  max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0.5rem auto;
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.white};
-  box-shadow: inset ${({ theme }) => theme.boxShadow};
-`
 
 function addWish(wish) {
   db.ref('wishes').push(wish)

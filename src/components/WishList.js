@@ -20,7 +20,8 @@ const Table = styled.table`
     padding: 0.5rem;
   }
   thead {
-    background-color: ${({ theme }) => theme.red};
+    background-color: ${({ theme }) => theme.green};
+    color: ${({ theme }) => theme.black};
   }
   tbody {
     tr {
