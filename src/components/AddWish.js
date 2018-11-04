@@ -29,6 +29,7 @@ function AddWish() {
           setPrice(0)
         }}
       >
+        <h2>Add a Wish</h2>
         <Label htmlFor="name">
           Name
           <Input

@@ -17,5 +17,7 @@ export const Form = styled.form`
   margin: 0.5rem auto;
   padding: 1rem;
   background-color: ${({ theme }) => theme.white};
-  box-shadow: inset ${({ theme }) => theme.boxShadow};
+  border: 1px solid ${({ theme }) => theme.green};
+  border-radius: 10px;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 `

@@ -15,6 +15,9 @@ const Table = styled.table`
   width: 100%;
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0.5rem auto;
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  border-radius: 0.2rem;
+
   td,
   th {
     padding: 0.5rem;
@@ -40,7 +43,7 @@ const Wish = ({ name, link, price, id }) => {
       <td>
         {link ? (
           <a href={link} target="_blank" rel="noopener noreferrer">
-            {link}
+            Se link.
           </a>
         ) : (
           <Center>–</Center>
