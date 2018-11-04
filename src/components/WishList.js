@@ -33,7 +33,7 @@ const Table = styled.table`
   }
 `
 
-const Wish = ({ name, link, price }) => {
+const Wish = ({ name, link, price, id }) => {
   return (
     <tr>
       <td>{name}</td>
@@ -47,7 +47,7 @@ const Wish = ({ name, link, price }) => {
         )}
       </td>
       <td>
-        <Right>{formatPrice(price)}</Right>
+        <Right>{price ? formatPrice(price) : <Center>–</Center>}</Right>
       </td>
     </tr>
   )
@@ -58,13 +58,14 @@ function useWishes() {
   useEffect(() => {
     db.ref('wishes').on('value', snapshot => {
       const value = snapshot.val()
+      if (!value) return
       const wishesArray = Object.keys(value).map(key => ({
         ...value[key],
         id: key,
       }))
       setWishes(wishesArray)
-      return () => db.ref('wishes').off('value')
     })
+    return () => db.ref('wishes').off('value')
   }, [])
 
   return [wishes, setWishes]
@@ -72,9 +73,7 @@ function useWishes() {
 
 function WishList() {
   const [wishes] = useWishes()
-  const [sortBy, setSortBy] = useState('')
-
-  if (wishes.length < 1) return <Center>Henter ønsker...</Center>
+  const [sortBy] = useState('')
 
   return (
     <Table>

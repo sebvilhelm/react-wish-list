@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Form, Label, Input } from './Form'
 import Button from './Button'
+import Error from './ErrorMessage'
 import { authContext } from '../auth'
 
 function useInput(initialValue) {
@@ -12,17 +13,23 @@ function useInput(initialValue) {
   return [value, setValue, onChange]
 }
 
-function LogIn() {
+function LogIn({ navigate }) {
   const { logIn } = useContext(authContext)
   const [email, setEmail, onChangeEmail] = useInput('')
   const [password, setPassword, onChangePassword] = useInput('')
+  const [error, setError] = useState()
   return (
     <Form
       onSubmit={event => {
         event.preventDefault()
         logIn({ email, password })
+          .then(() => {
+            navigate('/add-wish')
+          })
+          .catch(error => setError(error))
       }}
     >
+      <Error error={error} />
       <Label htmlFor="email">
         Email
         <Input
