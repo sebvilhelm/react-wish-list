@@ -18,12 +18,16 @@ function AuthProvider(props) {
   }
 
   useEffect(() => {
-    if (auth.currentUser) {
-      setUser(true)
-    }
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        setUser(true)
+      } else {
+        setUser(false)
+      }
+    })
   }, [])
 
-  return <authContext.Provider {...props} value={{ user, logIn }} />
+  return <authContext.Provider {...props} value={{ user, logIn, logOut }} />
 }
 
 export default AuthProvider

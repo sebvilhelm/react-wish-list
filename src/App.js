@@ -56,7 +56,7 @@ const Spacer = styled.div`
 `
 
 function App() {
-  const { user } = useContext(authContext)
+  const { user, logOut } = useContext(authContext)
   return (
     <ThemeProvider theme={theme}>
       <main>
@@ -72,7 +72,7 @@ function App() {
             )}
             <Spacer />
             {user ? (
-              <Button>Log out</Button>
+              <Button onClick={logOut}>Log out</Button>
             ) : (
               <OutlineButton as={Link} to="login">
                 Login
