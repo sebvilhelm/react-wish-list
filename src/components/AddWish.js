@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import wishContext from '../wishContext'
+import { db } from '../firebase'
 import Button from './Button'
 
 const Label = styled.label`
@@ -12,13 +12,20 @@ const Input = styled.input`
   padding: 0.5rem;
   margin: 0.5rem 0;
   font-size: 1rem;
+  border: 1px solid ${({ theme }) => theme.green};
 `
 
 const Form = styled.form`
   max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0 auto;
-  padding: 1rem 0;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  background-color: ${({ theme }) => theme.white};
+  box-shadow: inset ${({ theme }) => theme.boxShadow};
 `
+
+function addWish(wish) {
+  db.ref('wishes').push(wish)
+}
 
 /**
  * type Wish {
@@ -27,12 +34,10 @@ const Form = styled.form`
  *  price: Int
  * }
  */
-
 function AddWish() {
   const [name, setName] = useState('')
   const [link, setLink] = useState('')
   const [price, setPrice] = useState(0)
-  const { addWish } = useContext(wishContext)
   return (
     <>
       <Form

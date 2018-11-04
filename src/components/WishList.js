@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
-
-import wishContext from '../wishContext'
+import { db } from '../firebase'
 import { getSortFunction, formatPrice } from '../helpers'
 
 const Center = styled.div`
@@ -15,7 +14,7 @@ const Right = styled.div`
 const Table = styled.table`
   width: 100%;
   max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0 auto;
+  margin: 0.5rem auto;
   td,
   th {
     padding: 0.5rem;
@@ -53,9 +52,28 @@ const Wish = ({ name, link, price }) => {
   )
 }
 
+function useWishes() {
+  const [wishes, setWishes] = useState([])
+  useEffect(() => {
+    db.ref('wishes').on('value', snapshot => {
+      const value = snapshot.val()
+      const wishesArray = Object.keys(value).map(key => ({
+        ...value[key],
+        id: key,
+      }))
+      setWishes(wishesArray)
+      return () => db.ref('wishes').off('value')
+    })
+  }, [])
+
+  return [wishes, setWishes]
+}
+
 function WishList() {
-  const { wishes } = useContext(wishContext)
+  const [wishes] = useWishes()
   const [sortBy, setSortBy] = useState('')
+
+  if (wishes.length < 1) return <Center>Henter ønsker...</Center>
 
   return (
     <Table>

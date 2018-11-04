@@ -4,8 +4,8 @@ import styled from 'styled-components/macro'
 const StyledButton = styled.button`
   padding: 0.5rem 1rem;
   text-align: center;
-  background-color: ${({ theme }) => theme.red};
-  border: 1px solid ${({ theme }) => theme.red};
+  background-color: ${({ theme }) => theme.green};
+  border: 1px solid ${({ theme }) => theme.green};
   border-radius: 0.2rem;
   outline: none;
 
