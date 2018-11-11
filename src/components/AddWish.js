@@ -24,6 +24,10 @@ function AddWish() {
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
+
+  const hasAuthor =
+    category.toLowerCase() === 'bog' || category.toLowerCase() === 'lp'
+
   return (
     <>
       <Form
@@ -61,7 +65,7 @@ function AddWish() {
             required
           />
         </Label>
-        {category.toLowerCase() === 'bog' && (
+        {hasAuthor && (
           <Label htmlFor="author">
             Forfatter
             <Input
