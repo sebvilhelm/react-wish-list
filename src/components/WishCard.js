@@ -8,7 +8,7 @@ import Button from './Button'
 const Card = styled.div`
   display: inline-flex;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 1rem;
   background: ${({ theme }) => theme.white};
   box-shadow: ${({ theme }) => theme.boxShadow};
 `
@@ -29,6 +29,7 @@ const Category = styled.p`
   letter-spacing: 0.05px;
   order: -1;
   margin: 0;
+  align-self: flex-end;
 `
 
 const Price = styled.span`

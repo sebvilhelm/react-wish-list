@@ -13,7 +13,7 @@ const WishList = lazy(() => import('./components/WishList'))
 const AddWish = lazy(() => import('./components/AddWish'))
 
 const theme = {
-  maxWidth: '1000px',
+  maxWidth: '700px',
   red: 'hsl(9, 100%, 64%)',
   redBlack: 'hsl(9, 23%, 15%)',
   lightGreen: 'hsl(92, 21%, 71%)',
