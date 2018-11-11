@@ -8,6 +8,7 @@ const Grid = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 1rem auto;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   gap: 1rem;
 `
 

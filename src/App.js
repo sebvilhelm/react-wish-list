@@ -8,6 +8,7 @@ import { authContext } from './auth'
 import Spinner from './components/Spinner'
 import LogIn from './components/LogIn'
 import Button, { OutlineButton } from './components/Button'
+import { Spacer } from './components/styled-utils'
 const WishList = lazy(() => import('./components/WishList'))
 const AddWish = lazy(() => import('./components/AddWish'))
 
@@ -33,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
   *,*::before,*::after {box-sizing: inherit;}
   body {
     font-size: 1rem;
+    line-height: 1.5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: ${theme.black};
     background-color: ${theme.lightGrey};
@@ -55,10 +57,6 @@ const Nav = styled.nav`
 const StyledLink = styled(Link)`
   padding: 0 0.5rem;
   color: ${theme.green};
-`
-
-const Spacer = styled.div`
-  flex: 1;
 `
 
 function App() {

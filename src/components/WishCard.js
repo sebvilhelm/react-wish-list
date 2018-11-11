@@ -1,10 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { capitalize, formatPrice } from '../helpers'
+import { Spacer } from './styled-utils'
 
 import Button from './Button'
 
 const Card = styled.div`
+  display: inline-flex;
+  flex-direction: column;
   padding: 2rem 1rem;
   background: ${({ theme }) => theme.white};
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -12,23 +15,36 @@ const Card = styled.div`
 
 const Title = styled.h2`
   font-size: 1.5rem;
-  color: ${({ theme }) => theme.green};
   margin-top: 0;
+  small {
+    color: ${({ theme }) => theme.green};
+    font-size: 1.05rem;
+    display: block;
+  }
 `
 
 const Category = styled.p`
   color: ${({ theme }) => theme.lightGreen};
   font-weight: 600;
   letter-spacing: 0.05px;
-  margin-top: -1rem;
+  order: -1;
+  margin: 0;
 `
 
 const Price = styled.span`
   font-size: 1.5rem;
   margin-left: 0.3ch;
+  color: ${({ theme }) => theme.black};
 `
 
-const Link = props => <a {...props} />
+const DescriptionBox = styled.div`
+  background-color: ${({ theme }) => theme.lightGrey};
+  padding: 1rem;
+  margin-bottom: 1rem;
+  p {
+    margin: 0;
+  }
+`
 
 function WishCard({ wish }) {
   const { name, category, price, link, description, author } = wish
@@ -38,20 +54,22 @@ function WishCard({ wish }) {
         {capitalize(name)} {author && <small>af {author}</small>}
       </Title>
       <Category>{capitalize(category)}</Category>
-      {description && <p>{description}</p>}
+      {description && (
+        <DescriptionBox>
+          <p>{description}</p>
+        </DescriptionBox>
+      )}
       {price ? (
-        <p>
+        <p style={{ marginTop: 0 }}>
           Fundet til <Price>{formatPrice(price)}</Price>
         </p>
       ) : null}
-      <Button
-        className={Link}
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Se link
-      </Button>
+      <Spacer />
+      {link && (
+        <Button as="a" href={link} target="_blank" rel="noopener noreferrer">
+          Se link
+        </Button>
+      )}
     </Card>
   )
 }
