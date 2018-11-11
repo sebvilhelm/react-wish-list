@@ -18,3 +18,7 @@ export function formatPrice(price) {
   })
   return formatter.format(price / 100)
 }
+
+export function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
