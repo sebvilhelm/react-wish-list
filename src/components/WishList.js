@@ -6,9 +6,9 @@ import Spinner from './Spinner'
 
 const Grid = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
+  width: 100%;
   margin: 1rem auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   gap: 1rem;
 `
 
