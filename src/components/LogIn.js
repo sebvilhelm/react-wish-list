@@ -15,7 +15,9 @@ function useInput(initialValue) {
 
 function LogIn({ navigate }) {
   const { logIn } = useContext(authContext)
+  // eslint-disable-next-line
   const [email, setEmail, onChangeEmail] = useInput('')
+  // eslint-disable-next-line
   const [password, setPassword, onChangePassword] = useInput('')
   const [error, setError] = useState()
   return (

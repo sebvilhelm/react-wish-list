@@ -6,7 +6,7 @@ import { Spacer } from './styled-utils'
 import Button from './Button'
 
 const Card = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   padding: 1rem;
   background: ${({ theme }) => theme.white};
