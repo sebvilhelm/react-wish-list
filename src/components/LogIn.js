@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Form, Label, Input } from './Form'
 import Button from './Button'
 import Error from './ErrorMessage'
-import { authContext } from '../auth'
+import { useAuth } from '../auth'
 
 function useInput(initialValue) {
   const [value, setValue] = useState(initialValue)
@@ -14,7 +14,7 @@ function useInput(initialValue) {
 }
 
 function LogIn({ navigate }) {
-  const { logIn } = useContext(authContext)
+  const { logIn } = useAuth()
   // eslint-disable-next-line
   const [email, setEmail, onChangeEmail] = useInput('')
   // eslint-disable-next-line
