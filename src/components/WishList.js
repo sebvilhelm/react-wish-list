@@ -18,7 +18,9 @@ function WishList() {
   return (
     <Grid>
       {wishes ? (
-        wishes.map(wish => <WishCard key={wish.id} wish={wish} />)
+        wishes
+          .filter(wish => !wish.gotten)
+          .map(wish => <WishCard key={wish.id} wish={wish} />)
       ) : (
         <Spinner>Henter ønsker</Spinner>
       )}
