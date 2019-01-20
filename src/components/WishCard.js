@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { capitalize, formatPrice } from '../helpers'
 import { Spacer } from './styled-utils'
+import { useAuth } from '../auth'
 
 import Button from './Button'
 
@@ -47,7 +48,13 @@ const DescriptionBox = styled.div`
   }
 `
 
+const ButtonContainer = styled.div`
+  display: flex;
+`
+
 function WishCard({ wish }) {
+  const { user } = useAuth()
+
   const { name, category, price, link, description, author } = wish
   return (
     <Card>
@@ -66,11 +73,20 @@ function WishCard({ wish }) {
         </p>
       ) : null}
       <Spacer />
-      {link && (
-        <Button as="a" href={link} target="_blank" rel="noopener noreferrer">
-          Se link
-        </Button>
-      )}
+      <ButtonContainer>
+        {link && (
+          <Button
+            css={{ flex: 1 }}
+            as="a"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Se link
+          </Button>
+        )}
+        {user && <Button css={{ flex: 1 }}>Got it</Button>}
+      </ButtonContainer>
     </Card>
   )
 }
