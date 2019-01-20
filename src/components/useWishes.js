@@ -14,7 +14,7 @@ function useWishes() {
       setWishes(wishesArray)
     })
     return () => db.ref('wishes').off('value')
-  })
+  }, [])
 
   return [wishes, setWishes]
 }
