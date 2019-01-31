@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { db } from '../firebase'
 import { Form, Label, Input } from './Form'
 import Button from './Button'
 
 function addWish(wish) {
-  db.ref('wishes').push(wish)
+  // Do something
 }
 
 const TextArea = props => <textarea {...props} />

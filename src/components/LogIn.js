@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Form, Label, Input } from './Form'
 import Button from './Button'
 import Error from './ErrorMessage'
-import { useAuth } from '../auth'
 
 function useInput(initialValue) {
   const [value, setValue] = useState(initialValue)
@@ -13,8 +12,11 @@ function useInput(initialValue) {
   return [value, setValue, onChange]
 }
 
+function logIn() {
+  // nope
+}
+
 function LogIn({ navigate }) {
-  const { logIn } = useAuth()
   // eslint-disable-next-line
   const [email, setEmail, onChangeEmail] = useInput('')
   // eslint-disable-next-line
