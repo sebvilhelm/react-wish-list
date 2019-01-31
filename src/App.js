@@ -1,16 +1,10 @@
-import React, { Suspense, lazy, Fragment } from 'react'
-import { Router, Link } from '@reach/router'
+import React, { Suspense, lazy } from 'react'
 import styled, {
   createGlobalStyle,
   ThemeProvider,
 } from 'styled-components/macro'
-import { useAuth } from './auth'
 import Spinner from './components/Spinner'
-import LogIn from './components/LogIn'
-import Button, { OutlineButton } from './components/Button'
-import { Spacer } from './components/styled-utils'
 const WishList = lazy(() => import('./components/WishList'))
-const AddWish = lazy(() => import('./components/AddWish'))
 
 const theme = {
   maxWidth: '700px',
@@ -48,48 +42,16 @@ const Header = styled.header`
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
 `
-
-const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-`
-
-const StyledLink = styled(Link)`
-  padding: 0 0.5rem;
-  color: ${theme.green};
-`
-
 function App() {
-  const { user, logOut } = useAuth()
   return (
     <ThemeProvider theme={theme}>
       <main>
         <GlobalStyle />
         <Header>
           <h1>Sebastians Ønskeseddel</h1>
-          <Nav>
-            <StyledLink to="/">Ønskeseddel</StyledLink>
-            {user && (
-              <Fragment>
-                <StyledLink to="add-wish">Tilføj Ønske</StyledLink>
-              </Fragment>
-            )}
-            <Spacer />
-            {user ? (
-              <Button onClick={logOut}>Log out</Button>
-            ) : (
-              <OutlineButton as={Link} to="login">
-                Login
-              </OutlineButton>
-            )}
-          </Nav>
         </Header>
         <Suspense fallback={<Spinner />}>
-          <Router>
-            <WishList path="/" />
-            <AddWish path="add-wish" />
-            <LogIn path="login" />
-          </Router>
+          <WishList />
         </Suspense>
       </main>
     </ThemeProvider>
