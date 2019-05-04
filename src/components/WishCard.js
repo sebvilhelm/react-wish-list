@@ -61,7 +61,7 @@ function WishCard({ wish }) {
       <Category>{capitalize(category)}</Category>
       {description && (
         <DescriptionBox>
-          <p>{description}</p>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
         </DescriptionBox>
       )}
       {price ? (
