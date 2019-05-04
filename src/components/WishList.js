@@ -26,7 +26,7 @@ function useWishes() {
 
   React.useEffect(() => {
     fetchWishes()
-  })
+  }, [])
 
   return wishes
 }
