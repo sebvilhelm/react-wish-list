@@ -39,6 +39,15 @@ function WishList() {
       {wishes ? (
         wishes
           .filter(wish => !wish.gotten)
+          .sort((a, b) => {
+            if (a.category < b.category) {
+              return -1
+            }
+            if (a.category > b.category) {
+              return 1
+            }
+            return 0
+          })
           .map(wish => <WishCard key={wish.name} wish={wish} />)
       ) : (
         <Spinner>Henter ønsker</Spinner>
