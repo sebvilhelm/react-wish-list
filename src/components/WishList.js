@@ -15,7 +15,7 @@ function useWishes() {
   const [wishes, setWishes] = React.useState(undefined)
 
   async function fetchWishes() {
-    const apiKey = 'keynMwyvhe1K185SE'
+    const apiKey = process.env.REACT_APP_AIRTABLE_KEY
     const res = await fetch(
       `https://api.airtable.com/v0/appEwpq4AhqB4Bqk2/Wishes?api_key=${apiKey}`
     )
