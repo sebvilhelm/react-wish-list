@@ -45,6 +45,9 @@ const DescriptionBox = styled.div`
   p {
     margin: 0;
   }
+  a {
+    color: ${({ theme }) => theme.green};
+  }
 `
 
 const ButtonContainer = styled.div`
