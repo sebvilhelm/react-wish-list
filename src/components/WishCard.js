@@ -45,6 +45,9 @@ const DescriptionBox = styled.div`
   p {
     margin: 0;
   }
+  a {
+    color: ${({ theme }) => theme.green};
+  }
 `
 
 const ButtonContainer = styled.div`
@@ -61,7 +64,7 @@ function WishCard({ wish }) {
       <Category>{capitalize(category)}</Category>
       {description && (
         <DescriptionBox>
-          <p>{description}</p>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
         </DescriptionBox>
       )}
       {price ? (
