@@ -1,0 +1,7 @@
+[build]
+  command = "yarn build"
+  functions = "functions"
+[[redirects]]
+  from = "/api/get-wishes"
+  to = "/.netlify/functions/get-wishes"
+  status = 200
