@@ -13,42 +13,36 @@ const Grid = styled.div`
 
 function useWishes() {
   const [wishes, setWishes] = React.useState(undefined)
+  const [error, setError] = React.useState(null)
 
   async function fetchWishes() {
-    const apiKey = process.env.REACT_APP_AIRTABLE_KEY
-    const res = await fetch(
-      `https://api.airtable.com/v0/appEwpq4AhqB4Bqk2/Wishes?api_key=${apiKey}`
-    )
-    const resJson = await res.json()
-    const wishes = resJson.records.map(record => record.fields)
-    setWishes(wishes)
+    try {
+      const res = await fetch('/api/get-wishes')
+      const { data } = await res.json()
+      setWishes(data.wishes)
+    } catch (error) {
+      setError(error.message)
+    }
   }
 
   React.useEffect(() => {
     fetchWishes()
   }, [])
 
-  return wishes
+  return [wishes, { error }]
 }
 
 function WishList() {
-  const wishes = useWishes()
+  const [wishes, { error }] = useWishes()
+
+  if (error) {
+    throw error
+  }
 
   return (
     <Grid>
       {wishes ? (
-        wishes
-          .filter(wish => !wish.gotten)
-          .sort((a, b) => {
-            if (a.category < b.category) {
-              return -1
-            }
-            if (a.category > b.category) {
-              return 1
-            }
-            return 0
-          })
-          .map(wish => <WishCard key={wish.name} wish={wish} />)
+        wishes.map(wish => <WishCard key={wish.name} wish={wish} />)
       ) : (
         <Spinner>Henter ønsker</Spinner>
       )}
