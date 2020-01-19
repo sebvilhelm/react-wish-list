@@ -8,6 +8,8 @@ FLG -nostdlib
 FLG -w -30-40+6+7+27+32..39+44+45+101
 S /Users/vilhelmnielsen/Code/wish-list/node_modules/reason-react/lib/ocaml
 B /Users/vilhelmnielsen/Code/wish-list/node_modules/reason-react/lib/ocaml
+S /Users/vilhelmnielsen/Code/wish-list/node_modules/bs-intl/lib/ocaml
+B /Users/vilhelmnielsen/Code/wish-list/node_modules/bs-intl/lib/ocaml
 S src
 B lib/bs/src
 ####BSB GENERATED: NO EDIT}
