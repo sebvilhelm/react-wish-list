@@ -8,6 +8,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.0-alpha.1",
     "react-scripts": "2.1.0",
+    "reason-react": "0.7.0",
     "styled-components": "^4.0.3"
   },
   "scripts": {
@@ -16,7 +17,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write '**/*.+(js|jsx|md|ts|css|scss|sass|less|graphql|yml|yaml|json)'"
+    "format": "prettier --write '**/*.+(js|jsx|md|ts|css|scss|sass|less|graphql|yml|yaml|json)'",
+    "re:build": "bsb -make-world -clean-world",
+    "re:watch": "bsb -make-world -clean-world -w"
   },
   "eslintConfig": {
     "extends": [
@@ -31,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "bs-platform": "6.2.1",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "^3.0.0",
     "netlify-cli": "^2.21.0",
