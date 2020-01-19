@@ -1,6 +1,6 @@
 ####{BSB GENERATED: NO EDIT
 B lib/bs
-FLG -open YourProjectName
+FLG -open ReactWishList
 FLG -ppx '/Users/vilhelmnielsen/Code/wish-list/node_modules/bs-platform/lib/bsppx.exe -bs-jsx 3'
 S /Users/vilhelmnielsen/Code/wish-list/node_modules/bs-platform/lib/ocaml
 B /Users/vilhelmnielsen/Code/wish-list/node_modules/bs-platform/lib/ocaml
@@ -12,4 +12,6 @@ S /Users/vilhelmnielsen/Code/wish-list/node_modules/bs-intl/lib/ocaml
 B /Users/vilhelmnielsen/Code/wish-list/node_modules/bs-intl/lib/ocaml
 S src
 B lib/bs/src
+S src/components
+B lib/bs/src/components
 ####BSB GENERATED: NO EDIT}
