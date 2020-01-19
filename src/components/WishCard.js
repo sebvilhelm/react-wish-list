@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { capitalize, formatPrice } from '../helpers'
+import { capitalize, formatPrice } from '../helpers.bs.js'
 import { Spacer } from './styled-utils'
 
 import Button from './Button'
