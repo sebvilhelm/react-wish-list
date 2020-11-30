@@ -27,7 +27,7 @@ exports.handler = async function(event, context) {
         data: {
           wishes: data.records
             .map(r => r.fields)
-            .filter(wish => !wish.gotten)
+            .filter(wish => !wish.gotten && !wish.hidden)
             .sort((a, b) => {
               if (a.category < b.category) {
                 return -1
