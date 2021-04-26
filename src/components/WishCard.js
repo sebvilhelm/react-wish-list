@@ -15,7 +15,7 @@ function WishCard({ wish }) {
         </div>
       )}
       {price ? (
-        <p style={{ marginTop: 0 }}>
+        <p>
           Fundet til <span>{formatPrice(price)}</span>
         </p>
       ) : null}

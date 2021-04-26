@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 function Spinner({ children }) {
   const [spinner, setSpinner] = useState("...");
 
-  useEffect(
-    () => {
-      let timer = setTimeout(() => {
-        if (spinner.length >= 3) {
-          setSpinner(".");
-        } else {
-          setSpinner(spinner + ".");
-        }
-      }, 500);
-      return () => clearTimeout(timer);
-    },
-    [spinner]
-  );
+  useEffect(() => {
+    let interval = setInterval(() => {
+      if (spinner.length >= 3) {
+        setSpinner(".");
+      } else {
+        setSpinner(spinner => spinner + ".");
+      }
+    }, 500);
+
+    return () => {
+      clearInterval(interval);
+    };
+  });
 
   return (
     <div>
