@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components/macro'
-import WishCard from './WishCard'
-import Spinner from './Spinner'
+import React from "react";
+import styled from "styled-components/macro";
+import WishCard from "./WishCard";
+import Spinner from "./Spinner";
 
 const Grid = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
@@ -9,34 +9,34 @@ const Grid = styled.div`
   margin: 1rem auto;
   display: grid;
   gap: 1rem;
-`
+`;
 
 function useWishes() {
-  const [wishes, setWishes] = React.useState(undefined)
-  const [error, setError] = React.useState(null)
+  const [wishes, setWishes] = React.useState(undefined);
+  const [error, setError] = React.useState(null);
 
   async function fetchWishes() {
     try {
-      const res = await fetch('/api/get-wishes')
-      const { data } = await res.json()
-      setWishes(data.wishes)
+      const res = await fetch("/api/get-wishes");
+      const { data } = await res.json();
+      setWishes(data.wishes);
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
   }
 
   React.useEffect(() => {
-    fetchWishes()
-  }, [])
+    fetchWishes();
+  }, []);
 
-  return [wishes, { error }]
+  return [wishes, { error }];
 }
 
 function WishList() {
-  const [wishes, { error }] = useWishes()
+  const [wishes, { error }] = useWishes();
 
   if (error) {
-    throw error
+    throw error;
   }
 
   return (
@@ -47,7 +47,7 @@ function WishList() {
         <Spinner>Henter ønsker</Spinner>
       )}
     </Grid>
-  )
+  );
 }
 
-export default WishList
+export default WishList;

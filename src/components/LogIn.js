@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { Form, Label, Input } from './Form'
-import Button from './Button'
-import Error from './ErrorMessage'
+import React, { useState } from "react";
+import { Form, Label, Input } from "./Form";
+import Button from "./Button";
+import Error from "./ErrorMessage";
 
 function useInput(initialValue) {
-  const [value, setValue] = useState(initialValue)
+  const [value, setValue] = useState(initialValue);
   function onChange(event) {
-    setValue(event.target.value)
+    setValue(event.target.value);
   }
 
-  return [value, setValue, onChange]
+  return [value, setValue, onChange];
 }
 
 function logIn() {
@@ -21,16 +21,16 @@ function LogIn({ navigate }) {
   const [email, setEmail, onChangeEmail] = useInput('')
   // eslint-disable-next-line
   const [password, setPassword, onChangePassword] = useInput('')
-  const [error, setError] = useState()
+  const [error, setError] = useState();
   return (
     <Form
       onSubmit={event => {
-        event.preventDefault()
+        event.preventDefault();
         logIn({ email, password })
           .then(() => {
-            navigate('/add-wish')
+            navigate("/add-wish");
           })
-          .catch(error => setError(error))
+          .catch(error => setError(error));
       }}
     >
       <Error error={error} />
@@ -58,7 +58,7 @@ function LogIn({ navigate }) {
       </Label>
       <Button type="submit">Log In</Button>
     </Form>
-  )
+  );
 }
 
-export default LogIn
+export default LogIn;

@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Form, Label, Input } from './Form'
-import Button from './Button'
+import React, { useState } from "react";
+import { Form, Label, Input } from "./Form";
+import Button from "./Button";
 
 function addWish(wish) {
   // Do something
 }
 
-const TextArea = props => <textarea {...props} />
+const TextArea = props => <textarea {...props} />;
 
 /**
  * type Wish {
@@ -17,28 +17,28 @@ const TextArea = props => <textarea {...props} />
  * }
  */
 function AddWish() {
-  const [name, setName] = useState('')
-  const [link, setLink] = useState('')
-  const [author, setAuthor] = useState('')
-  const [category, setCategory] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState(0)
+  const [name, setName] = useState("");
+  const [link, setLink] = useState("");
+  const [author, setAuthor] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
 
   const hasAuthor =
-    category.toLowerCase() === 'bog' || category.toLowerCase() === 'lp'
+    category.toLowerCase() === "bog" || category.toLowerCase() === "lp";
 
   return (
     <>
       <Form
         onSubmit={event => {
-          event.preventDefault()
-          addWish({ name, link, price, category, author, description })
-          setName('')
-          setCategory('')
-          setAuthor('')
-          setDescription('')
-          setLink('')
-          setPrice(0)
+          event.preventDefault();
+          addWish({ name, link, price, category, author, description });
+          setName("");
+          setCategory("");
+          setAuthor("");
+          setDescription("");
+          setLink("");
+          setPrice(0);
         }}
       >
         <h2>Tilføj ønske</h2>
@@ -111,7 +111,7 @@ function AddWish() {
         <Button type="submit">Tilføj</Button>
       </Form>
     </>
-  )
+  );
 }
 
-export default AddWish
+export default AddWish;

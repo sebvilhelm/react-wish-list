@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components/macro'
-import { capitalize, formatPrice } from '../helpers'
-import { Spacer } from './styled-utils'
+import React from "react";
+import styled from "styled-components/macro";
+import { capitalize, formatPrice } from "../helpers";
+import { Spacer } from "./styled-utils";
 
-import Button from './Button'
+import Button from "./Button";
 
 const Card = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Card = styled.div`
   padding: 1rem;
   background: ${({ theme }) => theme.white};
   box-shadow: ${({ theme }) => theme.boxShadow};
-`
+`;
 
 const Title = styled.h2`
   font-size: 1.5rem;
@@ -21,7 +21,7 @@ const Title = styled.h2`
     font-size: 1.05rem;
     display: block;
   }
-`
+`;
 
 const Category = styled.p`
   color: ${({ theme }) => theme.lightGreen};
@@ -30,13 +30,13 @@ const Category = styled.p`
   order: -1;
   margin: 0;
   align-self: flex-end;
-`
+`;
 
 const Price = styled.span`
   font-size: 1.5rem;
   margin-left: 0.3ch;
   color: ${({ theme }) => theme.black};
-`
+`;
 
 const DescriptionBox = styled.div`
   background-color: ${({ theme }) => theme.lightGrey};
@@ -48,14 +48,14 @@ const DescriptionBox = styled.div`
   a {
     color: ${({ theme }) => theme.green};
   }
-`
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
-`
+`;
 
 function WishCard({ wish }) {
-  const { name, category, price, link, description, author } = wish
+  const { name, category, price, link, description, author } = wish;
   return (
     <Card>
       <Title>
@@ -87,7 +87,7 @@ function WishCard({ wish }) {
         )}
       </ButtonContainer>
     </Card>
-  )
+  );
 }
 
-export default WishCard
+export default WishCard;

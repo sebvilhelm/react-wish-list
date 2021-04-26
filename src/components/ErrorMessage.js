@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Alert from '@reach/alert'
+import React from "react";
+import styled from "styled-components";
+import Alert from "@reach/alert";
 
 const ErrorBox = styled.div`
   margin: 0.5rem 0;
@@ -8,15 +8,15 @@ const ErrorBox = styled.div`
   background-color: ${({ theme }) => theme.red};
   color: ${({ theme }) => theme.redBlack};
   border-radius: 0.2rem;
-`
+`;
 
 function ErrorMessage({ error }) {
-  if (!error) return null
+  if (!error) return null;
   return (
     <ErrorBox>
       <Alert>Error: {error.message}</Alert>
     </ErrorBox>
-  )
+  );
 }
 
-export default ErrorMessage
+export default ErrorMessage;

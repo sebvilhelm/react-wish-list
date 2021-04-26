@@ -1,8 +1,8 @@
-import styled from 'styled-components/macro'
+import styled from "styled-components/macro";
 
 export const Label = styled.label`
   display: block;
-`
+`;
 
 export const Input = styled.input`
   width: 100%;
@@ -10,7 +10,7 @@ export const Input = styled.input`
   margin: 0.5rem 0;
   font-size: 1rem;
   border: 1px solid ${({ theme }) => theme.green};
-`
+`;
 
 export const Form = styled.form`
   max-width: ${({ theme }) => theme.maxWidth};
@@ -20,4 +20,4 @@ export const Form = styled.form`
   border: 1px solid ${({ theme }) => theme.green};
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.boxShadow};
-`
+`;
