@@ -1,13 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components/macro";
-
-const Text = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 1rem 0;
-  color: ${({ theme }) => theme.darkGreen};
-`;
 
 function Spinner({ children }) {
   const [spinner, setSpinner] = useState("...");
@@ -27,10 +18,10 @@ function Spinner({ children }) {
   );
 
   return (
-    <Text>
+    <div>
       {children}
       {spinner}
-    </Text>
+    </div>
   );
 }
 

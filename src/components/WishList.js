@@ -1,15 +1,6 @@
 import React from "react";
-import styled from "styled-components/macro";
 import WishCard from "./WishCard";
 import Spinner from "./Spinner";
-
-const Grid = styled.div`
-  max-width: ${({ theme }) => theme.maxWidth};
-  width: 100%;
-  margin: 1rem auto;
-  display: grid;
-  gap: 1rem;
-`;
 
 function useWishes() {
   const [wishes, setWishes] = React.useState(undefined);
@@ -40,13 +31,13 @@ function WishList() {
   }
 
   return (
-    <Grid>
+    <div>
       {wishes ? (
         wishes.map(wish => <WishCard key={wish.name} wish={wish} />)
       ) : (
         <Spinner>Henter ønsker</Spinner>
       )}
-    </Grid>
+    </div>
   );
 }
 
