@@ -1,7 +1,7 @@
 export function formatPrice(price) {
   const formatter = new Intl.NumberFormat("da-DK", {
     style: "currency",
-    currency: "DKK"
+    currency: "DKK",
   });
   return formatter.format(price / 100);
 }

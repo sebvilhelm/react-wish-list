@@ -8,7 +8,7 @@ function Spinner({ children }) {
       if (spinner.length >= 3) {
         setSpinner(".");
       } else {
-        setSpinner(spinner => spinner + ".");
+        setSpinner((spinner) => spinner + ".");
       }
     }, 500);
 

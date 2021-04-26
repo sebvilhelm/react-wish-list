@@ -33,7 +33,7 @@ function WishList() {
   return (
     <div>
       {wishes ? (
-        wishes.map(wish => <WishCard key={wish.name} wish={wish} />)
+        wishes.map((wish) => <WishCard key={wish.name} wish={wish} />)
       ) : (
         <Spinner>Henter ønsker</Spinner>
       )}
