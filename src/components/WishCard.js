@@ -1,4 +1,3 @@
-import React from "react";
 import { capitalize, formatPrice } from "../helpers";
 
 function WishCard({ wish }) {

@@ -1,10 +1,10 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import WishCard from "./WishCard";
 import Spinner from "./Spinner";
 
 function useWishes() {
-  const [wishes, setWishes] = React.useState(undefined);
-  const [error, setError] = React.useState(null);
+  const [wishes, setWishes] = useState(undefined);
+  const [error, setError] = useState(null);
 
   async function fetchWishes() {
     try {
@@ -16,7 +16,7 @@ function useWishes() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchWishes();
   }, []);
 

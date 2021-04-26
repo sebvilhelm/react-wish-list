@@ -1,4 +1,4 @@
-export function formatPrice(price) {
+export function formatPrice(price: number): string {
   const formatter = new Intl.NumberFormat("da-DK", {
     style: "currency",
     currency: "DKK",
@@ -6,6 +6,6 @@ export function formatPrice(price) {
   return formatter.format(price / 100);
 }
 
-export function capitalize(string) {
+export function capitalize(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
