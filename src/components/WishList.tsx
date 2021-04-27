@@ -1,15 +1,7 @@
+import type { Wish } from "./WishCard";
 import { useState, useEffect } from "react";
 import WishCard from "./WishCard";
 import Spinner from "./Spinner";
-
-interface Wish {
-  name: string;
-  category: string;
-  price: number;
-  link: string;
-  description: string;
-  author?: string;
-}
 
 type WishStatus = "success" | "loading" | "error";
 interface WishState {

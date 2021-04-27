@@ -1,6 +1,7 @@
+import type { ReactChild } from "react";
 import { useState, useEffect } from "react";
 
-function Spinner({ children }) {
+function Spinner({ children }: { children: ReactChild }): JSX.Element {
   const [spinner, setSpinner] = useState("...");
 
   useEffect(() => {
