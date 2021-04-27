@@ -1,5 +1,5 @@
 import type { Wish } from "./WishCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import WishCard from "./WishCard";
 import Spinner from "./Spinner";
 
@@ -56,7 +56,14 @@ function WishList(): JSX.Element {
   return (
     <div>
       {status === "success" ? (
-        wishes.map((wish) => <WishCard key={wish.name} wish={wish} />)
+        wishes.map((wish, index) => {
+          return (
+            <Fragment key={wish.name}>
+              <WishCard wish={wish} />
+              {index < wishes.length - 1 && <hr />}
+            </Fragment>
+          );
+        })
       ) : (
         <Spinner>Henter ønsker</Spinner>
       )}
