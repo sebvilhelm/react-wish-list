@@ -1,7 +1,14 @@
-import type { LoaderFunction } from "remix";
+import type { LoaderFunction, HeadersFunction } from "remix";
 import { useLoaderData, json } from "remix";
 import type { Wish } from "~/components/wish";
 import { WishCard } from "~/components/wish";
+
+export let headers: HeadersFunction = ({ loaderHeaders }) => {
+  return {
+    "Cache-Control":
+      loaderHeaders.get("Cache-Control") ?? "max-age=300, s-maxage=3600",
+  };
+};
 
 interface WishesData {
   records: ReadonlyArray<{
@@ -44,7 +51,11 @@ export let loader: LoaderFunction = async () => {
 
   let data: LoaderData = { wishes };
 
-  return json(data);
+  return json(data, {
+    headers: {
+      "Cache-Control": "max-age=300, s-maxage=3600",
+    },
+  });
 };
 
 export default function WishList() {
