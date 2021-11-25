@@ -1,13 +1,28 @@
-import { capitalize, formatPrice } from "../helpers";
+import { formatPrice } from "~/utils/formatting";
 
-function WishCard({ wish }) {
+export interface Wish {
+  id: string;
+  author?: string;
+  category: string;
+  description?: string;
+  gotten?: boolean;
+  hidden?: boolean;
+  link?: string;
+  name: string;
+  price?: number;
+}
+
+interface WishCardProps {
+  wish: Wish;
+}
+export function WishCard({ wish }: WishCardProps): JSX.Element {
   const { name, category, price, link, description, author } = wish;
   return (
     <section>
       <h2>
-        {capitalize(name)} {author && <small>af {author}</small>}
+        {name} {author && <small>af {author}</small>}
       </h2>
-      <span>{capitalize(category)}</span>
+      <span>{category}</span>
       {description && (
         <div>
           <p dangerouslySetInnerHTML={{ __html: description }} />
@@ -28,5 +43,3 @@ function WishCard({ wish }) {
     </section>
   );
 }
-
-export default WishCard;

@@ -1,17 +1,7 @@
 import type { LoaderFunction } from "remix";
 import { useLoaderData, json } from "remix";
-
-interface Wish {
-  id: string;
-  author?: string;
-  category: string;
-  description?: string;
-  gotten?: boolean;
-  hidden?: boolean;
-  link?: string;
-  name: string;
-  price?: number;
-}
+import type { Wish } from "~/components/wish";
+import { WishCard } from "~/components/wish";
 
 interface WishesData {
   records: ReadonlyArray<{
@@ -62,7 +52,12 @@ export default function WishList() {
   return (
     <main>
       <h1>Min ønskeseddel!</h1>
-      <pre>{JSON.stringify(data.wishes, null, 2)}</pre>
+      {data.wishes.map((w, i) => (
+        <>
+          <WishCard key={w.id} wish={w} />
+          {i < data.wishes.length - 1 && <hr />}
+        </>
+      ))}
     </main>
   );
 }
