@@ -18,19 +18,22 @@ interface WishCardProps {
 export function WishCard({ wish }: WishCardProps): JSX.Element {
   const { name, category, price, link, description, author } = wish;
   return (
-    <section>
-      <h2>
-        {name} {author && <small>af {author}</small>}
-      </h2>
-      <span>{category}</span>
+    <section className="wish-card">
+      <header className="wish_card_header">
+        <h2 className="wish-card_title">
+          {name} {author && <small>af {author}</small>}
+        </h2>
+        <span className="wish-card_category">{category}</span>
+      </header>
       {description && (
-        <div>
+        <div className="wish-card_description">
           <p dangerouslySetInnerHTML={{ __html: description }} />
         </div>
       )}
       {price ? (
         <p>
-          Fundet til <span>{formatPrice(price)}</span>
+          Fundet til{" "}
+          <span className="wish-card_price">{formatPrice(price)}</span>
         </p>
       ) : null}
       <div>

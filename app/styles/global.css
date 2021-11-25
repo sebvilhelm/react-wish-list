@@ -1,0 +1,65 @@
+:root {
+  --root-hue: 178;
+}
+
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: hsl(var(--root-hue), 15%, 5%);
+  font-size: 14px;
+}
+
+body {
+  background-color: hsl(var(--root-hue), 5%, 96%);
+}
+
+h1 {
+  font-size: 3rem;
+  color: hsl(var(--root-hue), 65%, 35%);
+}
+
+main {
+  background-color: hsl(var(--root-hue), 5%, 99%);
+  max-width: 800px;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1.5rem 3rem 2rem;
+  display: grid;
+}
+
+a {
+  color: hsl(var(--root-hue), 75%, 30%);
+  font-weight: 600;
+}
+
+.wish-card {
+  margin: 0 -3rem;
+  padding: 1.5rem 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wish-card:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--root-hue), 5%, 88%);
+}
+
+.wish_card_header {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 5fr 1fr;
+}
+
+.wish-card_category {
+  text-align: right;
+  font-weight: 600;
+  color: hsl(var(--root-hue), 5%, 30%);
+}
+
+.wish-card_description {
+  padding: 1.5rem 2rem;
+  background-color: hsl(var(--root-hue), 5%, 95%);
+}
+
+.wish-card_price {
+  font-weight: 600;
+}

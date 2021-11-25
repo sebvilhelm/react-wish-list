@@ -63,11 +63,8 @@ export default function WishList() {
   return (
     <main>
       <h1>Min ønskeseddel!</h1>
-      {data.wishes.map((w, i) => (
-        <>
-          <WishCard key={w.id} wish={w} />
-          {i < data.wishes.length - 1 && <hr />}
-        </>
+      {data.wishes.map((w) => (
+        <WishCard key={w.id} wish={w} />
       ))}
     </main>
   );
